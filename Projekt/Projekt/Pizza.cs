@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Projekt
 {
-    internal class Pizza
+    public class Pizza
     {
         private string name;
         private List<string> ingredients;

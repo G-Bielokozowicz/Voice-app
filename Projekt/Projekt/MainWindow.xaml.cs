@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,8 +25,20 @@ namespace Projekt
     {
         public MainWindow()
         {
+            DataContext = this;
             InitializeComponent();
             InitializeAvaiblePizzas();
+        }
+
+        
+        private ObservableCollection<Pizza> orderedPizzas;
+        public ObservableCollection<Pizza> OrderedPizzas
+        {
+            get { return orderedPizzas; }
+            set
+            {
+                orderedPizzas = value;
+            }
         }
 
         private List<Pizza> pizzas;
@@ -31,6 +46,11 @@ namespace Projekt
         {
             return pizzas;
         }
+
+      
+   
+   
+
         public void InitializeAvaiblePizzas()
         {
             pizzas = new List<Pizza>()
@@ -48,9 +68,9 @@ namespace Projekt
                  
                 // Dodaj inne pizze
             };
-
+            orderedPizzas = new ObservableCollection<Pizza>();
             pizzaListBox.ItemsSource = GetPizzaList();
-           
+            orderedPizzaListBox.ItemsSource = OrderedPizzas;
         }
 
         private void txtPizzaNameSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -137,7 +157,8 @@ namespace Projekt
             if (pizza != null)
             {
                 // Dodaj wybraną pizzę do orderedPizzaListBox
-                orderedPizzaListBox.Items.Add(pizza);
+                orderedPizzas.Add(pizza);
+                orderedPizzaListBox.ItemsSource = orderedPizzas;
             }
         }
 
@@ -156,7 +177,8 @@ namespace Projekt
             if (pizzaToRemove != null)
             {
                 // Dodaj wybraną pizzę do orderedPizzaListBox
-                orderedPizzaListBox.Items.Remove(pizzaToRemove);
+                orderedPizzas.Remove(pizzaToRemove);
+                orderedPizzaListBox.ItemsSource = orderedPizzas;
             }
         }
     }
