@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
-        Title="Pizza App" Height="650" Width="800">
+        Title="Pizza App" Height="680" Width="800">
     <Grid Background="Azure">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -14,8 +14,8 @@
         
         <Grid Grid.Column="0"> <!-- Grid na liste pizzy i pole do wyszukiwania -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="80*"/>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="75*" MinHeight="150"/>
+                <RowDefinition Height="25*" MinHeight="100"/>
             </Grid.RowDefinitions>
             <ListBox x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0">
                 <ListBox.ItemTemplate>
@@ -45,9 +45,23 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Label Grid.Row="1" Content="Szukaj pizzy po nazwie:" VerticalAlignment="Top" VerticalContentAlignment="Center" MaxHeight="50" FontSize="20"/>
-            <TextBox Grid.Row="1" Name="txtPizzaNameSearch" FontSize="20" MaxHeight="50" VerticalContentAlignment="Center" VerticalAlignment="Top"
-                     Margin="5,35,0,5" TextChanged="txtPizzaNameSearch_TextChanged"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="40"/>
+                    <RowDefinition MinHeight="40"/>
+                    <RowDefinition MinHeight="40"/>
+                    <RowDefinition MinHeight="40"/>
+                  
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Szukaj pizzy po nazwie:"  VerticalContentAlignment="Center"  FontSize="20"/>
+                <TextBox Grid.Row="1" Name="txtPizzaNameSearch" FontSize="20" VerticalContentAlignment="Center" 
+                     TextChanged="txtPizzaNameSearch_TextChanged"/>
+                <Label Grid.Row="2" Content="Szukaj pizzy po składniku:"  VerticalContentAlignment="Center"  FontSize="20"/>
+                <TextBox Grid.Row="3" Name="txtPizzaIngredientSearch" FontSize="20" VerticalContentAlignment="Center" 
+                     TextChanged="txtPizzaIngredientSearch_TextChanged"/>
+            </Grid>
+           
+            
         </Grid>
         
     </Grid>

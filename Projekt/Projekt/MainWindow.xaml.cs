@@ -50,6 +50,7 @@ namespace Projekt
             };
 
             pizzaListBox.ItemsSource = GetPizzaList();
+           
         }
 
         private void txtPizzaNameSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -64,6 +65,39 @@ namespace Projekt
                 pizzaListBox.ItemsSource = string.IsNullOrEmpty(searchText)
                     ? pizzasList
                     : pizzasList.Where(pizza => pizza.Name.ToLower().Contains(searchText)).ToList();
+
+            }
+            else
+            {
+                // Obsłuż sytuację, gdy GetPizzaList() zwraca null
+                // Możesz dodać odpowiednią obsługę błędów lub dostarczyć domyślną listę pizz
+                pizzaListBox.ItemsSource = new List<Pizza>();
+            }
+        }
+
+        private void txtPizzaIngredientSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = txtPizzaIngredientSearch.Text.ToLower();
+
+            // Sprawdź, czy GetPizzaList() nie zwraca null
+            List<Pizza> pizzasList = GetPizzaList();
+            if (pizzasList != null)
+            {
+                // Jeśli tekst jest pusty, pokaż wszystkie pizze
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    pizzaListBox.ItemsSource = pizzasList;
+                }
+                else
+                {
+                    // Rozdziel wprowadzone składniki
+                    string[] ingredients = searchText.Split(' ');
+
+                    // Filtruj pizze, uwzględniając dowolne dopasowanie składników
+                    pizzaListBox.ItemsSource = pizzasList
+                        .Where(pizza => pizza.Ingredients.Any(ingredient => ingredients.Contains(ingredient.ToLower())))
+                        .ToList();
+                }
             }
             else
             {
@@ -74,4 +108,7 @@ namespace Projekt
         }
 
     }
+
+
 }
+
