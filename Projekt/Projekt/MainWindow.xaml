@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
         Title="Pizza App" Height="650" Width="800">
-    <Grid>
+    <Grid Background="Azure">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="60*"/>
@@ -45,6 +45,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Label Grid.Row="1" Content="Szukaj pizzy po nazwie:" VerticalAlignment="Top" VerticalContentAlignment="Center" MaxHeight="50" FontSize="20"/>
+            <TextBox Grid.Row="1" Name="txtPizzaNameSearch" FontSize="20" MaxHeight="50" VerticalContentAlignment="Center" VerticalAlignment="Top"
+                     Margin="5,35,0,5" TextChanged="txtPizzaNameSearch_TextChanged"/>
         </Grid>
         
     </Grid>

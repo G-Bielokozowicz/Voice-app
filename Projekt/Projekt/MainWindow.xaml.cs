@@ -23,13 +23,17 @@ namespace Projekt
         public MainWindow()
         {
             InitializeComponent();
-          
             InitializeAvaiblePizzas();
         }
 
+        private List<Pizza> pizzas;
+        private List<Pizza> GetPizzaList()
+        {
+            return pizzas;
+        }
         public void InitializeAvaiblePizzas()
         {
-            List<Pizza> pizzas = new List<Pizza>()
+            pizzas = new List<Pizza>()
             {
                  new Pizza("Margherita", new List<string> { "Sos pomidorowy", "Ser",}, 29.99, 32.99, 37.99),
                  new Pizza("Pepperoni", new List<string> { "Sos pomidorowy", "Ser", "Pepperoni" },32.99, 35.99, 39.99),
@@ -45,7 +49,29 @@ namespace Projekt
                 // Dodaj inne pizze
             };
 
-            pizzaListBox.ItemsSource = pizzas;
+            pizzaListBox.ItemsSource = GetPizzaList();
         }
+
+        private void txtPizzaNameSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = txtPizzaNameSearch.Text.ToLower();
+
+            // Sprawdź, czy GetPizzaList() nie zwraca null
+            List<Pizza> pizzasList = GetPizzaList();
+            if (pizzasList != null)
+            {
+                // Jeśli tekst jest pusty, pokaż wszystkie pizze, w przeciwnym razie, filtrowanie
+                pizzaListBox.ItemsSource = string.IsNullOrEmpty(searchText)
+                    ? pizzasList
+                    : pizzasList.Where(pizza => pizza.Name.ToLower().Contains(searchText)).ToList();
+            }
+            else
+            {
+                // Obsłuż sytuację, gdy GetPizzaList() zwraca null
+                // Możesz dodać odpowiednią obsługę błędów lub dostarczyć domyślną listę pizz
+                pizzaListBox.ItemsSource = new List<Pizza>();
+            }
+        }
+
     }
 }
