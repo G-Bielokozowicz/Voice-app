@@ -120,7 +120,7 @@ namespace Projekt
 
         }
 
-        private void PizzaListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void pizzaListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListBox listBox && listBox.SelectedItem is Pizza selectedPizza)
             {
@@ -141,7 +141,24 @@ namespace Projekt
             }
         }
 
-        
+        private void orderedPizzaListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListBox listBox && listBox.SelectedItem is Pizza selectedPizza)
+            {
+                // Usuń wybraną pizzę z orderedPizzaListBox
+                RemovePizzaFromOrderedListBox(selectedPizza);
+               
+            }
+        }
+
+        private void RemovePizzaFromOrderedListBox(Pizza pizzaToRemove)
+        { // Dodaj wybraną pizzę do orderedPizzaListBox
+            if (pizzaToRemove != null)
+            {
+                // Dodaj wybraną pizzę do orderedPizzaListBox
+                orderedPizzaListBox.Items.Remove(pizzaToRemove);
+            }
+        }
     }
 
 

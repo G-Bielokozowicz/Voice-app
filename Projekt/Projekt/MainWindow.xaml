@@ -20,7 +20,7 @@
             <Label Grid.Row="0" MaxHeight="50" VerticalAlignment="Top" HorizontalAlignment="Left"
                    Content="Menu:" FontSize="20"/>
             <ListBox Grid.Row="0" x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
-                     Background="#F0F0F0" MouseDoubleClick="PizzaListBox_MouseDoubleClick" Margin="0,32,0,0">
+                     Background="#F0F0F0" MouseDoubleClick="pizzaListBox_MouseDoubleClick" Margin="0,32,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1" Margin="2" Padding="5" CornerRadius="2">
@@ -83,7 +83,7 @@
                 <Label Grid.Row="0" MaxHeight="50" VerticalAlignment="Top" HorizontalAlignment="Left"
                    Content="Zamówienie:" FontSize="20"/>
                 <ListBox Grid.Row="0" x:Name="orderedPizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0"
-                         Margin="0,32,0,0">
+                         Margin="0,32,0,0" MouseDoubleClick="orderedPizzaListBox_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="Black" BorderThickness="1" Margin="2" Padding="5">
