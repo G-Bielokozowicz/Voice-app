@@ -119,6 +119,29 @@ namespace Projekt
         {
 
         }
+
+        private void PizzaListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListBox listBox && listBox.SelectedItem is Pizza selectedPizza)
+            {
+                // Dodaj wybraną pizzę do orderedPizzaListBox
+                AddPizzaToOrderedListBox(selectedPizza);
+                listBox.SelectedItem = null;
+            }
+       
+        }
+
+        private void AddPizzaToOrderedListBox(Pizza pizza)
+        {
+            // Dodaj wybraną pizzę do orderedPizzaListBox
+            if (pizza != null)
+            {
+                // Dodaj wybraną pizzę do orderedPizzaListBox
+                orderedPizzaListBox.Items.Add(pizza);
+            }
+        }
+
+        
     }
 
 

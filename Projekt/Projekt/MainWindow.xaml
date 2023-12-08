@@ -17,7 +17,7 @@
                 <RowDefinition Height="75*" MinHeight="150"/>
                 <RowDefinition Height="25*" MinHeight="100"/>
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0">
+            <ListBox Grid.Row="0" x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0" MouseDoubleClick="PizzaListBox_MouseDoubleClick">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1" Margin="2" Padding="5" CornerRadius="2">
