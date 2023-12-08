@@ -57,6 +57,10 @@ namespace Projekt
         {
             string searchText = txtPizzaNameSearch.Text.ToLower();
 
+            txtPizzaIngredientSearch.TextChanged -= txtPizzaIngredientSearch_TextChanged;
+            txtPizzaIngredientSearch.Text = "";
+            txtPizzaIngredientSearch.TextChanged += txtPizzaIngredientSearch_TextChanged;
+
             // Sprawdź, czy GetPizzaList() nie zwraca null
             List<Pizza> pizzasList = GetPizzaList();
             if (pizzasList != null)
@@ -78,6 +82,10 @@ namespace Projekt
         private void txtPizzaIngredientSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = txtPizzaIngredientSearch.Text.ToLower();
+
+            txtPizzaNameSearch.TextChanged -= txtPizzaNameSearch_TextChanged;
+            txtPizzaNameSearch.Text = "";
+            txtPizzaNameSearch.TextChanged += txtPizzaNameSearch_TextChanged;
 
             // Sprawdź, czy GetPizzaList() nie zwraca null
             List<Pizza> pizzasList = GetPizzaList();
