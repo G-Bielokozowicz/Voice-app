@@ -17,7 +17,10 @@
                 <RowDefinition Height="75*" MinHeight="150"/>
                 <RowDefinition Height="25*" MinHeight="100"/>
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0" MouseDoubleClick="PizzaListBox_MouseDoubleClick">
+            <Label Grid.Row="0" MaxHeight="50" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Content="Menu:" FontSize="20"/>
+            <ListBox Grid.Row="0" x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
+                     Background="#F0F0F0" MouseDoubleClick="PizzaListBox_MouseDoubleClick" Margin="0,32,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1" Margin="2" Padding="5" CornerRadius="2">
@@ -45,6 +48,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition MinHeight="40"/>
@@ -76,7 +80,10 @@
                     <RowDefinition Height="70*"/>
                     <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
-                <ListBox Grid.Row="0" x:Name="orderedPizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0">
+                <Label Grid.Row="0" MaxHeight="50" VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Content="Zamówienie:" FontSize="20"/>
+                <ListBox Grid.Row="0" x:Name="orderedPizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#F0F0F0"
+                         Margin="0,32,0,0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="Black" BorderThickness="1" Margin="2" Padding="5">
