@@ -21,7 +21,7 @@ namespace Projekt
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
@@ -29,8 +29,22 @@ namespace Projekt
             InitializeComponent();
             InitializeAvaiblePizzas();
         }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyNmae = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyNmae));
+        }
+        private double totalPrice;
 
-        
+        public double TotalPrice
+        {
+            get { return totalPrice; }
+            set
+            {
+                totalPrice = value;
+                OnPropertyChanged();
+            }
+        }
         private ObservableCollection<OrderedPizza> orderedPizzas;
         public ObservableCollection<OrderedPizza> OrderedPizzas
         {
@@ -48,8 +62,7 @@ namespace Projekt
         }
 
       
-   
-   
+
 
         public void InitializeAvaiblePizzas()
         {
@@ -168,9 +181,10 @@ namespace Projekt
 
                     OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
 
-                    Console.WriteLine(sizeDialog.SelectedSize);
+                 
                     orderedPizzas.Add(ordPizza);
                     orderedPizzaListBox.ItemsSource = orderedPizzas;
+                    UpdateTotalPrice();
                 }
  
             }
@@ -193,7 +207,14 @@ namespace Projekt
                 // Dodaj wybraną pizzę do orderedPizzaListBox
                 orderedPizzas.Remove(pizzaToRemove);
                 orderedPizzaListBox.ItemsSource = orderedPizzas;
+                UpdateTotalPrice();
             }
+        }
+
+        private void UpdateTotalPrice()
+        {
+            TotalPrice = orderedPizzas.Sum(pizza => pizza.Price); // Przykładowo, możesz zmienić to na odpowiednie obliczenia
+            Console.WriteLine("Cena:" + TotalPrice);
         }
     }
 
