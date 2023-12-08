@@ -102,9 +102,9 @@
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="1" HorizontalAlignment="Right">
-                                        <TextBlock Text="{Binding PriceSmall, StringFormat='Mała: {0:C2}', ConverterCulture='pl-PL'}" />
-                                        <TextBlock Text="{Binding PriceMedium, StringFormat='Średnia: {0:C2}', ConverterCulture='pl-PL'}" />
-                                        <TextBlock Text="{Binding PriceBig, StringFormat='Duża: {0:C2}', ConverterCulture='pl-PL'}" />
+                                        <TextBlock Text="{Binding Size}" />
+                                        <TextBlock Text="{Binding Price, StringFormat='Cena: {0:C2}', ConverterCulture='pl-PL'}" />
+                                       
                                     </StackPanel>
                                 </Grid>
                             </Border>

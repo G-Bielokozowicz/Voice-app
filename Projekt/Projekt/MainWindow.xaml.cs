@@ -31,8 +31,8 @@ namespace Projekt
         }
 
         
-        private ObservableCollection<Pizza> orderedPizzas;
-        public ObservableCollection<Pizza> OrderedPizzas
+        private ObservableCollection<OrderedPizza> orderedPizzas;
+        public ObservableCollection<OrderedPizza> OrderedPizzas
         {
             get { return orderedPizzas; }
             set
@@ -68,9 +68,11 @@ namespace Projekt
                  
                 // Dodaj inne pizze
             };
-            orderedPizzas = new ObservableCollection<Pizza>();
+           
             pizzaListBox.ItemsSource = GetPizzaList();
             orderedPizzaListBox.ItemsSource = OrderedPizzas;
+
+            orderedPizzas = new ObservableCollection<OrderedPizza>();
         }
 
         private void txtPizzaNameSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -156,15 +158,27 @@ namespace Projekt
             // Dodaj wybraną pizzę do orderedPizzaListBox
             if (pizza != null)
             {
-                // Dodaj wybraną pizzę do orderedPizzaListBox
-                orderedPizzas.Add(pizza);
-                orderedPizzaListBox.ItemsSource = orderedPizzas;
+             
+                PizzaSizeSelectionDialog sizeDialog = new PizzaSizeSelectionDialog(this);
+
+                // Pokaż okno dialogowe
+                if (sizeDialog.ShowDialog() == true)
+                {
+                    // Pobierz wybrany rozmiar i dodaj pizzę z rozmiarem do listy zamówień
+
+                    OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
+
+                    Console.WriteLine(sizeDialog.SelectedSize);
+                    orderedPizzas.Add(ordPizza);
+                    orderedPizzaListBox.ItemsSource = orderedPizzas;
+                }
+ 
             }
         }
 
         private void orderedPizzaListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (sender is ListBox listBox && listBox.SelectedItem is Pizza selectedPizza)
+            if (sender is ListBox listBox && listBox.SelectedItem is OrderedPizza selectedPizza)
             {
                 // Usuń wybraną pizzę z orderedPizzaListBox
                 RemovePizzaFromOrderedListBox(selectedPizza);
@@ -172,7 +186,7 @@ namespace Projekt
             }
         }
 
-        private void RemovePizzaFromOrderedListBox(Pizza pizzaToRemove)
+        private void RemovePizzaFromOrderedListBox(OrderedPizza pizzaToRemove)
         { // Dodaj wybraną pizzę do orderedPizzaListBox
             if (pizzaToRemove != null)
             {

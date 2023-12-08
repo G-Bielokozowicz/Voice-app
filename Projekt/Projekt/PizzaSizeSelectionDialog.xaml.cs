@@ -22,29 +22,29 @@ namespace Projekt
     {
         public string SelectedSize { get; private set; }
 
-        public PizzaSizeSelectionDialog(List<string> pizzaSizes)
+        public PizzaSizeSelectionDialog(Window owner)
         {
             InitializeComponent();
-            InitializeComboBox(pizzaSizes);
+            Owner = owner; // Ustaw okno nadrzędne
+            WindowStartupLocation = WindowStartupLocation.CenterOwner; // Ustaw miejsce pojawiania się
         }
 
-        private void InitializeComboBox(List<string> pizzaSizes)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            cmbPizzaSize.ItemsSource = pizzaSizes;
-            cmbPizzaSize.SelectedIndex = 0; // Domyślnie wybierz pierwszy rozmiar
+            if (sender is RadioButton radioButton)
+            {
+                SelectedSize = radioButton.Content.ToString();
+            }
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            // Zapisz wybrany rozmiar i zamknij okno
-            SelectedSize = cmbPizzaSize.SelectedItem as string;
             DialogResult = true;
             Close();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Anuluj i zamknij okno
             DialogResult = false;
             Close();
         }

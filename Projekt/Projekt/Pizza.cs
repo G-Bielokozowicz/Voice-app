@@ -76,5 +76,21 @@ namespace Projekt
             Console.WriteLine($"Cena (średnia): {priceMedium:C}");
             Console.WriteLine($"Cena (duża): {priceBig:C}");
         }
+
+        public double GetPriceBySize(string size)
+        {
+            switch (size)
+            {
+                case "Mała":
+                    return priceSmall;
+                case "Średnia":
+                    return priceMedium;
+                case "Duża":
+                    return priceBig;
+                default:
+                    break;
+            }
+            return -1;
+        }
     }
 }
