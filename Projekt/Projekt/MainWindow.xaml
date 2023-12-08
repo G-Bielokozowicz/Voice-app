@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -14,10 +14,38 @@
         
         <Grid Grid.Column="0"> <!-- Grid na liste pizzy i pole do wyszukiwania -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="70*"/>
-                <RowDefinition Height="30*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
-            <ListView Name="avaiblePizzas" Grid.Row="0"/>
+            <ListBox x:Name="pizzaListBox" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5">
+                            <Grid>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding Name}" />
+                                    <WrapPanel>
+                                        <ItemsControl ItemsSource="{Binding Ingredients}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" Margin="2" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </WrapPanel>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                    <TextBlock Text="{Binding Price, StringFormat=C}" />
+                                    <TextBlock Text="{Binding PriceSmall, StringFormat='Small: {0:C}'}" />
+                                    <TextBlock Text="{Binding PriceMedium, StringFormat='Medium: {0:C}'}" />
+                                    <TextBlock Text="{Binding PriceBig, StringFormat='Big: {0:C}'}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
         
     </Grid>

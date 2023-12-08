@@ -24,12 +24,19 @@ namespace Projekt
         {
             InitializeComponent();
           
-
+            InitializeAvaiblePizzas();
         }
 
         public void InitializeAvaiblePizzas()
         {
-            avaiblePizzas.Items.Add(new Pizza("Margherita", new List<string> { "Sos pomidorowy", "Ser", "Bazylia" },29.99,33.99,37.99));
+            List<Pizza> pizzas = new List<Pizza>()
+            {
+                 new Pizza("Margherita", new List<string> { "Sos pomidorowy", "Ser",}, 29.99, 32.99, 37.99),
+                 new Pizza("Pepperoni", new List<string> { "Sos pomidorowy", "Ser", "Pepperoni" },32.99, 35.99, 39.99),
+                // Dodaj inne pizze
+            };
+
+            pizzaListBox.ItemsSource = pizzas;
         }
     }
 }
