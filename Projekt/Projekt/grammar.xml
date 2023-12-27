@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar"
+		 tag-format="semantics-ms/1.0" 
+         version="1.0" xml:lang="pl_pl" root="Main">
+	
+	<rule id="Main" scope="public">
+		<!--<item>
+			<ruleref uri="#Poczatek"/>
+		</item>-->
+		<one-of>
+			<item>Wyjdź <tag>$.Wyjdz="Wyjdz"</tag></item>
+			<item>
+				<ruleref uri="#Pomoc"/>
+				<tag>$.Pomoc="Pomoc"</tag>
+			</item>
+		</one-of>
+		
+	</rule>
+
+	<rule id="Pomoc" scope="public">
+		<one-of>
+			<item>Pomoc</item>
+			<item>Pomocy</item>
+			<item>Pomóż</item>
+			<item>Co robić</item>
+			<item>Jak robić</item>
+		</one-of>
+	</rule>
+
+
+
+	
+</grammar>

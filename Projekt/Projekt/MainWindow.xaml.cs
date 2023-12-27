@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Speech.Recognition;
+using Microsoft.Speech.Synthesis;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -28,7 +31,65 @@ namespace Projekt
             DataContext = this;
             InitializeComponent();
             InitializeAvaiblePizzas();
+            Loaded += MainWindow_Loaded;
         }
+
+
+        private SpeechRecognitionEngine speechRecognitionEngine;
+        private SpeechSynthesizer speechSynthesiserEngine = new SpeechSynthesizer();
+
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Inicjalizacja silnika rozpoznawania mowy
+            speechRecognitionEngine = new SpeechRecognitionEngine(new CultureInfo("pl-PL"));
+
+            // Ścieżka do pliku zawierającego gramatykę SRGS
+            string grammarFilePath = "../../../grammar.xml";
+
+            // Wczytaj gramatykę z pliku
+            Grammar grammar = new Grammar(grammarFilePath);
+
+            // Dodaj gramatykę do silnika rozpoznawania mowy
+            speechRecognitionEngine.LoadGrammar(grammar);
+
+            // Ustaw obsługę zdarzenia rozpoznawania
+            speechRecognitionEngine.SpeechRecognized += SpeechRecognitionEngine_SpeechRecognized;
+
+            // Start silnika rozpoznawania mowy
+            speechRecognitionEngine.SetInputToDefaultAudioDevice();
+            speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+            speechSynthesiserEngine.SetOutputToDefaultAudioDevice();
+            speechSynthesiserEngine.SpeakAsync("Witam w pizzeri");
+
+        }
+
+        private void SpeechRecognitionEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            // Obsługa zdarzenia rozpoznania mowy
+            string recognizedText = e.Result.Text;
+            SemanticValue semantics = e.Result.Semantics;
+            float confidence = e.Result.Confidence;
+            if (confidence < 0.60)
+            {
+                speechSynthesiserEngine.SpeakAsync("Proszę powtórzyć");
+                return;
+            }
+
+
+            if (semantics.ContainsKey("Wyjdz")) // jak sprawdzić jaki tag wybrano
+            {
+                speechSynthesiserEngine.Speak("Wychodzę z programu");
+                Application.Current.Shutdown();
+            }
+
+            if (semantics.ContainsKey("Pomoc"))
+            {
+                speechSynthesiserEngine.Speak("Test, udzielam pomocy");
+            }
+
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyNmae = null)
         {
@@ -214,7 +275,7 @@ namespace Projekt
         private void UpdateTotalPrice()
         {
             TotalPrice = orderedPizzas.Sum(pizza => pizza.Price); // Przykładowo, możesz zmienić to na odpowiednie obliczenia
-            Console.WriteLine("Cena:" + TotalPrice);
+            
         }
     }
 
