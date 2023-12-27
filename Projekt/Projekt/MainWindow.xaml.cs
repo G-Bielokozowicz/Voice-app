@@ -76,6 +76,30 @@ namespace Projekt
                 return;
             }
 
+            if (semantics.ContainsKey("Pomoc"))
+            {
+                speechSynthesiserEngine.SpeakAsync("Test, udzielam pomocy");
+            }
+
+            if (semantics.ContainsKey("Rozmiar") && (semantics.ContainsKey("Pizza")))
+            {
+                Console.WriteLine("Rozpoznano glos 1");
+                Console.WriteLine(semantics["Rozmiar"].Value.ToString());
+                Console.WriteLine(semantics["Pizza"].Value.ToString());
+                return;
+            }
+
+            if (semantics.ContainsKey("Rozmiar"))
+            {
+                Console.WriteLine("Rozpoznano glos 2");
+                Console.WriteLine(semantics["Rozmiar"].Value.ToString());
+            }
+
+            if (semantics.ContainsKey("Pizza"))
+            {
+                Console.WriteLine("Rozpoznano glos 3");
+                Console.WriteLine(semantics["Pizza"].Value.ToString());
+            }
 
             if (semantics.ContainsKey("Wyjdz")) // jak sprawdzić jaki tag wybrano
             {
@@ -83,10 +107,7 @@ namespace Projekt
                 Application.Current.Shutdown();
             }
 
-            if (semantics.ContainsKey("Pomoc"))
-            {
-                speechSynthesiserEngine.Speak("Test, udzielam pomocy");
-            }
+          
 
         }
 

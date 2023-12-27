@@ -13,8 +13,100 @@
 				<ruleref uri="#Pomoc"/>
 				<tag>$.Pomoc="Pomoc"</tag>
 			</item>
+			<item>
+				<ruleref uri="#Rozmiar"/>
+				<tag>$.Rozmiar=$Rozmiar</tag>
+			</item>
+			<item>
+				<ruleref uri="#Pizza"/>
+				<tag>$.Pizza=$Pizza</tag>
+			</item>
+			<item>
+				<ruleref uri="#Rozmiar"/>
+				<tag>$.Rozmiar=$Rozmiar</tag>
+				<ruleref uri="#Pizza"/>
+				<tag>$.Pizza=$Pizza</tag>
+
+			</item>
 		</one-of>
-		
+	</rule>
+
+	<rule id="Pizza" scope="public">
+		<one-of>
+			<item>
+				Margarita <tag> $="Margherita" </tag>
+			</item>
+			<item>
+				Margerita <tag> $="Margherita" </tag>
+			</item>
+			<item>
+				Margaritta <tag> $="Margherita" </tag>
+			</item>
+			<item>
+				Margeritta <tag> $="Margherita" </tag>
+			</item>
+			
+		</one-of>
+	</rule>
+
+	<rule id="Rozmiar" scope="public">
+		<one-of>
+			<item>Rozmiar</item>
+			<item></item>
+		</one-of>
+		<one-of>
+			<item>
+				Duży <tag> $="Duży" </tag>
+			</item>
+			<item>
+				Dużego <tag> $="Duży" </tag>
+			</item>
+			<item>
+				Duża <tag> $="Duży" </tag>
+			</item>
+			<item>
+				Dużą <tag> $="Duży" </tag>
+			</item>
+			<item>
+				Średni <tag> $="Średni" </tag>
+			</item>
+			<item>
+				Średniego <tag> $="Średni" </tag>
+			</item>
+			<item>
+				Średnia <tag> $="Średni" </tag>
+			</item>
+			<item>
+				Średnią <tag> $="Średni" </tag>
+			</item>
+			<item>
+				Mały <tag> $="Mały" </tag>
+			</item>
+			<item>
+				Małego <tag> $="Mały" </tag>
+			</item>
+			<item>
+				Mała <tag> $="Mały" </tag>
+			</item>
+			<item>
+				Małą <tag> $="Mały" </tag>
+			</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Poczatek" scope="public">
+		<one-of>
+			<item>Zaznacz</item>
+			<item>Wybierz</item>
+			<item></item>
+			<item>Chcę</item>
+			<item>Proszę</item>
+			<item>Poproszę</item>
+			<item>Daj</item>
+			<item>Podaj</item>
+			<item>Zamów</item>
+			<item>Dodaj</item>
+		</one-of>
 	</rule>
 
 	<rule id="Pomoc" scope="public">
