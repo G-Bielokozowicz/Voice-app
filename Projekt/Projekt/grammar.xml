@@ -34,8 +34,8 @@
 	<rule id="Pizza" scope="public">
 		<one-of>
 			<item>
-				<ruleref uri="#Margheritta"/>
-				<tag>$="Margheritta"</tag>
+				<ruleref uri="#Margherita"/>
+				<tag>$="Margherita"</tag>
 			</item>
 			<item>
 				<ruleref uri="#Pepperoni"/>
@@ -186,7 +186,7 @@
 	</rule>
 	
 	
-	<rule id="Margheritta" scope="public">
+	<rule id="Margherita" scope="public">
 		<one-of>
 			<item>
 				Margarita 

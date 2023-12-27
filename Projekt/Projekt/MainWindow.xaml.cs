@@ -84,9 +84,11 @@ namespace Projekt
 
             if (semantics.ContainsKey("Rozmiar") && (semantics.ContainsKey("Pizza")))
             {
-         
-                Console.WriteLine(semantics["Rozmiar"].Value.ToString());
-                Console.WriteLine(semantics["Pizza"].Value.ToString());
+                string chosenPizza = semantics["Pizza"].Value.ToString();
+                string chosenSize = semantics["Rozmiar"].Value.ToString();
+                Console.WriteLine(chosenPizza);
+                AddPizzaWithSizeToOrderedListBoxVoice(chosenPizza, chosenSize);
+                Console.WriteLine("Tutaj");
                 return;
             }
 
@@ -99,8 +101,9 @@ namespace Projekt
 
             if (semantics.ContainsKey("Pizza"))
             {
-                
-                Console.WriteLine(semantics["Pizza"].Value.ToString());
+                string chosenPizza = semantics["Pizza"].Value.ToString();
+
+                AddPizzaToOrderedListBoxVoice(chosenPizza);
                 return;
             }
 
@@ -275,6 +278,59 @@ namespace Projekt
             }
         }
 
+        private void AddPizzaToOrderedListBoxVoice(string pizzaName)
+        {
+
+            Pizza pizza = findPizza(pizzaName);
+            // Dodaj wybraną pizzę do orderedPizzaListBox
+            if (pizza != null)
+            {
+
+                PizzaSizeSelectionDialog sizeDialog = new PizzaSizeSelectionDialog(this);
+
+                // Pokaż okno dialogowe
+                if (sizeDialog.ShowDialog() == true)
+                {
+                    // Pobierz wybrany rozmiar i dodaj pizzę z rozmiarem do listy zamówień
+
+                    OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
+
+
+                    orderedPizzas.Add(ordPizza);
+                    orderedPizzaListBox.ItemsSource = orderedPizzas;
+                    UpdateTotalPrice();
+                }
+
+            }
+        }
+
+        private void AddPizzaWithSizeToOrderedListBoxVoice(string pizzaName, string size)
+        {
+
+            Pizza pizza = findPizza(pizzaName);
+            Console.WriteLine(pizza.ToString() + " " + size);
+            // Dodaj wybraną pizzę do orderedPizzaListBox
+            if (pizza != null)
+            {
+
+                OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(size), size);
+
+                orderedPizzas.Add(ordPizza);
+                orderedPizzaListBox.ItemsSource = orderedPizzas;
+                UpdateTotalPrice();
+                
+
+            }
+        }
+
+        private Pizza findPizza(string name)
+        {
+            foreach (Pizza pizza in Pizzas)
+            {
+                if (pizza.Name == name) return pizza;
+            }
+            return null;
+        }
         private void orderedPizzaListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListBox listBox && listBox.SelectedItem is OrderedPizza selectedPizza)
