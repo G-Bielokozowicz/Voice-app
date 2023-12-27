@@ -6,9 +6,9 @@
         <StackPanel Margin="10">
             <TextBlock Text="Wybierz rozmiar:" FontWeight="Bold" Margin="0,0,0,5"/>
             <StackPanel x:Name="sizePanel" Margin="0,0,0,10">
-                <RadioButton Content="Mała" GroupName="PizzaSizeGroup" Checked="RadioButton_Checked" IsChecked="True"/>
-                <RadioButton Content="Średnia" GroupName="PizzaSizeGroup" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Duża" GroupName="PizzaSizeGroup" Checked="RadioButton_Checked"/>
+                <RadioButton Name="MalaOption" Content="Mała" GroupName="PizzaSizeGroup" Checked="RadioButton_Checked" IsChecked="True"/>
+                <RadioButton Name="SredniaOption" Content="Średnia" GroupName="PizzaSizeGroup" Checked="RadioButton_Checked"/>
+                <RadioButton Name="DuzaOption" Content="Duża" GroupName="PizzaSizeGroup" Checked="RadioButton_Checked"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="OK" Width="75" Margin="0,0,10,0" Click="BtnOk_Click"/>

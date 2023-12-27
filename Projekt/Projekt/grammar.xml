@@ -28,6 +28,12 @@
 				<tag>$.Pizza=$Pizza</tag>
 
 			</item>
+			<item>
+				<ruleref uri="#Pizza"/>
+				<tag>$.Pizza=$Pizza</tag>
+				<ruleref uri="#Rozmiar"/>
+				<tag>$.Rozmiar=$Rozmiar</tag>
+			</item>
 		</one-of>
 	</rule>
 

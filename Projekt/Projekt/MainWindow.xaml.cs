@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
 
 namespace Projekt
 {
@@ -32,15 +33,19 @@ namespace Projekt
             InitializeComponent();
             InitializeAvaiblePizzas();
             Loaded += MainWindow_Loaded;
+           
         }
 
 
         private SpeechRecognitionEngine speechRecognitionEngine;
         private SpeechSynthesizer speechSynthesiserEngine = new SpeechSynthesizer();
+        PizzaSizeSelectionDialog sizeDialog;
 
 
-        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+
+            sizeDialog = new PizzaSizeSelectionDialog(this);
             // Inicjalizacja silnika rozpoznawania mowy
             speechRecognitionEngine = new SpeechRecognitionEngine(new CultureInfo("pl-PL"));
 
@@ -55,10 +60,11 @@ namespace Projekt
 
             // Ustaw obsługę zdarzenia rozpoznawania
             speechRecognitionEngine.SpeechRecognized += SpeechRecognitionEngine_SpeechRecognized;
-
+            
             // Start silnika rozpoznawania mowy
             speechRecognitionEngine.SetInputToDefaultAudioDevice();
             speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+
             speechSynthesiserEngine.SetOutputToDefaultAudioDevice();
             speechSynthesiserEngine.SpeakAsync("Witam w pizzeri");
 
@@ -86,16 +92,41 @@ namespace Projekt
             {
                 string chosenPizza = semantics["Pizza"].Value.ToString();
                 string chosenSize = semantics["Rozmiar"].Value.ToString();
-                Console.WriteLine(chosenPizza);
-                AddPizzaWithSizeToOrderedListBoxVoice(chosenPizza, chosenSize);
-                Console.WriteLine("Tutaj");
+                AddPizzaWithSizeToOrderedListBoxVoice(chosenPizza, chosenSize); 
                 return;
             }
 
             if (semantics.ContainsKey("Rozmiar"))
             {
-              
-                Console.WriteLine(semantics["Rozmiar"].Value.ToString());
+                string chosenSize = semantics["Rozmiar"].Value.ToString();
+                
+                if (sizeDialog.IsVisible)
+                {
+                    Console.WriteLine("Jest dialog");
+                    switch (chosenSize)
+                    {
+                        case "Mała":
+                            sizeDialog.MalaOption.IsChecked = true;
+                            break;
+                        case "Średnia":
+                            sizeDialog.SredniaOption.IsChecked = true;
+                            break;
+                        case "Duża":
+                            sizeDialog.DuzaOption.IsChecked = true;
+                            break;
+                        default:
+                            sizeDialog.DuzaOption.IsChecked = true;
+                            break;
+                    }
+                      
+                    sizeDialog.DialogResult = true;
+                    sizeDialog.Close();
+                    
+                } 
+                else
+                {
+                    Console.WriteLine("Nie ma dialogu");
+                }
                 return;
             }
 
@@ -104,6 +135,8 @@ namespace Projekt
                 string chosenPizza = semantics["Pizza"].Value.ToString();
 
                 AddPizzaToOrderedListBoxVoice(chosenPizza);
+              
+               
                 return;
             }
 
@@ -112,12 +145,10 @@ namespace Projekt
                 speechSynthesiserEngine.Speak("Wychodzę z programu");
                 Application.Current.Shutdown();
             }
-
-          
-
         }
+      
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyNmae = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyNmae));
@@ -259,9 +290,7 @@ namespace Projekt
             // Dodaj wybraną pizzę do orderedPizzaListBox
             if (pizza != null)
             {
-             
-                PizzaSizeSelectionDialog sizeDialog = new PizzaSizeSelectionDialog(this);
-
+                sizeDialog = new PizzaSizeSelectionDialog(this);
                 // Pokaż okno dialogowe
                 if (sizeDialog.ShowDialog() == true)
                 {
@@ -269,7 +298,6 @@ namespace Projekt
 
                     OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
 
-                 
                     orderedPizzas.Add(ordPizza);
                     orderedPizzaListBox.ItemsSource = orderedPizzas;
                     UpdateTotalPrice();
@@ -285,16 +313,13 @@ namespace Projekt
             // Dodaj wybraną pizzę do orderedPizzaListBox
             if (pizza != null)
             {
-
-                PizzaSizeSelectionDialog sizeDialog = new PizzaSizeSelectionDialog(this);
-
+                sizeDialog = new PizzaSizeSelectionDialog(this);
                 // Pokaż okno dialogowe
                 if (sizeDialog.ShowDialog() == true)
                 {
                     // Pobierz wybrany rozmiar i dodaj pizzę z rozmiarem do listy zamówień
 
                     OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
-
 
                     orderedPizzas.Add(ordPizza);
                     orderedPizzaListBox.ItemsSource = orderedPizzas;
