@@ -4,9 +4,9 @@
          version="1.0" xml:lang="pl_pl" root="Main">
 	
 	<rule id="Main" scope="public">
-		<!--<item>
+		<item>
 			<ruleref uri="#Poczatek"/>
-		</item>-->
+		</item>
 		<one-of>
 			<item>Wyjdź <tag>$.Wyjdz="Wyjdz"</tag></item>
 			<item>
@@ -34,18 +34,196 @@
 	<rule id="Pizza" scope="public">
 		<one-of>
 			<item>
-				Margarita <tag> $="Margherita" </tag>
+				<ruleref uri="#Margheritta"/>
+				<tag>$="Margheritta"</tag>
 			</item>
 			<item>
-				Margerita <tag> $="Margherita" </tag>
+				<ruleref uri="#Pepperoni"/>
+				<tag>$="Pepperoni"</tag>
 			</item>
 			<item>
-				Margaritta <tag> $="Margherita" </tag>
+				<ruleref uri="#Kurczak"/>
+				<tag>$="Kurczak"</tag>
 			</item>
 			<item>
-				Margeritta <tag> $="Margherita" </tag>
+				<ruleref uri="#Americana"/>
+				<tag>$="Americana"</tag>
 			</item>
-			
+			<item>
+				<ruleref uri="#Bekonowa"/>
+				<tag>$="Bekonowa"</tag>
+			</item>
+			<item>
+				<ruleref uri="#Mięsna"/>
+				<tag>$="Mięsna"</tag>
+			</item>
+			<item>
+				<ruleref uri="#Grecka"/>
+				<tag>$="Grecka"</tag>
+			</item>
+			<item>
+				<ruleref uri="#Hawajska"/>
+				<tag>$="Hawajska"</tag>
+			</item>
+			<item>
+				<ruleref uri="#Europejska"/>
+				<tag>$="Europejska"</tag>
+			</item>
+			<item>
+				<ruleref uri="#Farmerska"/>
+				<tag>$="Farmerska"</tag>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="Farmerska" scope="public">
+		<one-of>
+			<item>Farmerska</item>
+			<item>Farmerską</item>
+			<item>Farmerskę</item>
+			<item>Farmerske</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Europejska" scope="public">
+		<one-of>
+			<item>Europejska</item>
+			<item>Europejską</item>
+			<item>Europejskę</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Hawajska" scope="public">
+		<one-of>
+			<item>Hawajska</item>
+			<item>Hawajską</item>
+			<item>Hawajskę</item>
+		</one-of>
+	</rule>
+
+	<rule id="Grecka" scope="public">
+		<one-of>
+			<item> Grecka</item>
+			<item> Grecką</item>
+			<item> Greckę</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Mięsna" scope="public">
+		<one-of>
+			<item>Miesna</item>
+			<item>Miesną</item>
+			<item>Mięsna</item>
+			<item>Mięsną</item>
+			<item>Mięsnę</item>
+			<item>Miesne</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Bekonowa" scope="public">
+		<one-of>
+			<item> Bekonowa </item>
+			<item> Bekonową</item>
+			<item> Bekonowe</item>
+			<item> Bekonowę</item>
+			<item> Z Bekonem</item>
+			<item> Z Bekonę</item>
+		</one-of>
+	</rule>
+
+	<rule id="Americana" scope="public">
+		<one-of>
+			<item>
+				Americana
+			</item>
+			<item>
+				Amerikana
+			</item>
+			<item>
+				Americane
+			</item>
+			<item>
+				Americanę
+			</item>
+			<item>
+				Amerikanę
+			</item>
+			<item>
+				Amerikane
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="Kurczak" scope="public">
+		<one-of>
+			<item>
+				Kurczak
+			</item>
+			<item>
+				Kurczaka
+			</item>
+			<item>
+				Z Kurczaka
+			</item>
+			<item>
+				Kurczakiem
+			</item>
+			<item>
+				Z Kurczakiem
+			</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Pepperoni" scope="public">
+		<one-of>
+			<item>
+				Peperoni
+			</item>
+			<item>
+				Pepperoni
+			</item>
+		</one-of>
+	</rule>
+	
+	
+	<rule id="Margheritta" scope="public">
+		<one-of>
+			<item>
+				Margarita 
+			</item>
+			<item>
+				Margerita 
+			</item>
+			<item>
+				Margeritą
+			</item>
+			<item>
+				Margeritę 
+			</item>
+			<item>
+				Margerite 
+			</item>
+			<item>
+				Margaritta 
+			</item>
+			<item>
+				Margarittą 
+			</item>
+			<item>
+				Margarittę 
+			</item>
+			<item>
+				Margeritta 
+			</item>
+			<item>
+				Margeritta
+			</item>
+			<item>
+				Margerittę 
+			</item>
+			<item>
+				Margerittą 
+			</item>
 		</one-of>
 	</rule>
 
@@ -56,57 +234,70 @@
 		</one-of>
 		<one-of>
 			<item>
-				Duży <tag> $="Duży" </tag>
+				Duży <tag> $="Duża" </tag>
 			</item>
 			<item>
-				Dużego <tag> $="Duży" </tag>
+				Dużego <tag> $="Duża" </tag>
 			</item>
 			<item>
-				Duża <tag> $="Duży" </tag>
+				Duża <tag> $="Duża" </tag>
 			</item>
 			<item>
-				Dużą <tag> $="Duży" </tag>
+				Dużą <tag> $="Duża" </tag>
 			</item>
 			<item>
-				Średni <tag> $="Średni" </tag>
+				Średni <tag> $="Średnia" </tag>
 			</item>
 			<item>
-				Średniego <tag> $="Średni" </tag>
+				Średniego <tag> $="Średnia" </tag>
 			</item>
 			<item>
-				Średnia <tag> $="Średni" </tag>
+				Średnia <tag> $="Średnia" </tag>
 			</item>
 			<item>
-				Średnią <tag> $="Średni" </tag>
+				Średnią <tag> $="Średnia" </tag>
 			</item>
 			<item>
-				Mały <tag> $="Mały" </tag>
+				Mały <tag> $="Mała" </tag>
 			</item>
 			<item>
-				Małego <tag> $="Mały" </tag>
+				Małego <tag> $="Mała" </tag>
 			</item>
 			<item>
-				Mała <tag> $="Mały" </tag>
+				Mała <tag> $="Mała" </tag>
 			</item>
 			<item>
-				Małą <tag> $="Mały" </tag>
+				Małą <tag> $="Mała" </tag>
 			</item>
 		</one-of>
 	</rule>
 	
 	<rule id="Poczatek" scope="public">
-		<one-of>
-			<item>Zaznacz</item>
-			<item>Wybierz</item>
-			<item></item>
-			<item>Chcę</item>
-			<item>Proszę</item>
-			<item>Poproszę</item>
-			<item>Daj</item>
-			<item>Podaj</item>
-			<item>Zamów</item>
-			<item>Dodaj</item>
-		</one-of>
+		<item>
+			<one-of>
+				<item>Zaznacz</item>
+				<item>Wybierz</item>
+				<item></item>
+				<item>Chcę</item>
+				<item>Proszę</item>
+				<item>Poproszę</item>
+				<item>Daj</item>
+				<item>Podaj</item>
+				<item>Zamów</item>
+				<item>Dodaj</item>
+			</one-of>
+			<one-of>
+				<item>Pizza</item>
+				<item>Pizze</item>
+				<item>Pizzę</item>
+				<item>Piccę</item>
+				<item>Picca</item>
+				<item>Piccą</item>
+				<item>Picce</item>
+				<item></item>
+			</one-of>
+		</item>
+	
 	</rule>
 
 	<rule id="Pomoc" scope="public">

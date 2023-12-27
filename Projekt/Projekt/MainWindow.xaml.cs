@@ -70,6 +70,7 @@ namespace Projekt
             string recognizedText = e.Result.Text;
             SemanticValue semantics = e.Result.Semantics;
             float confidence = e.Result.Confidence;
+            Console.WriteLine(recognizedText + " ,confidence:" + confidence);
             if (confidence < 0.60)
             {
                 speechSynthesiserEngine.SpeakAsync("Proszę powtórzyć");
@@ -83,7 +84,7 @@ namespace Projekt
 
             if (semantics.ContainsKey("Rozmiar") && (semantics.ContainsKey("Pizza")))
             {
-                Console.WriteLine("Rozpoznano glos 1");
+         
                 Console.WriteLine(semantics["Rozmiar"].Value.ToString());
                 Console.WriteLine(semantics["Pizza"].Value.ToString());
                 return;
@@ -91,14 +92,16 @@ namespace Projekt
 
             if (semantics.ContainsKey("Rozmiar"))
             {
-                Console.WriteLine("Rozpoznano glos 2");
+              
                 Console.WriteLine(semantics["Rozmiar"].Value.ToString());
+                return;
             }
 
             if (semantics.ContainsKey("Pizza"))
             {
-                Console.WriteLine("Rozpoznano glos 3");
+                
                 Console.WriteLine(semantics["Pizza"].Value.ToString());
+                return;
             }
 
             if (semantics.ContainsKey("Wyjdz")) // jak sprawdzić jaki tag wybrano
@@ -137,18 +140,18 @@ namespace Projekt
             }
         }
 
-        private List<Pizza> pizzas;
-        private List<Pizza> GetPizzaList()
+        public List<Pizza> Pizzas { get; set; }
+        public List<Pizza> GetPizzaList()
         {
-            return pizzas;
+            return Pizzas;
         }
 
-      
+        
 
 
         public void InitializeAvaiblePizzas()
         {
-            pizzas = new List<Pizza>()
+            Pizzas = new List<Pizza>()
             {
                  new Pizza("Margherita", new List<string> { "Sos pomidorowy", "Ser",}, 29.99, 32.99, 37.99),
                  new Pizza("Pepperoni", new List<string> { "Sos pomidorowy", "Ser", "Pepperoni" },32.99, 35.99, 39.99),
