@@ -94,10 +94,20 @@ namespace Projekt
                 txtPizzaNameSearch.Text = "";
             }
 
-            if (semantics.ContainsKey("Szukaj") && (semantics.ContainsKey("Skladnik")))
+            if (semantics.ContainsKey("Szukaj"))
             {
-                string chosenIngredient = semantics["Skladnik"].Value.ToString();
-                txtPizzaIngredientSearch.Text = chosenIngredient;
+                if (semantics.ContainsKey("Skladnik"))
+                {
+                    string chosenIngredient = semantics["Skladnik"].Value.ToString();
+                    txtPizzaIngredientSearch.Text = chosenIngredient;
+                }
+                else if (semantics.ContainsKey("Pizza"))
+                {
+                    string chosenPizza = semantics["Pizza"].Value.ToString();
+                    txtPizzaNameSearch.Text = chosenPizza;
+                }
+
+                return;
             }
 
             if (semantics.ContainsKey("Rozmiar") && (semantics.ContainsKey("Pizza"))) // powiedziano rozmiar i pizze, np. duza pepperoni - dodaj do zamowienia

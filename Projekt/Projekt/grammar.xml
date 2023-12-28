@@ -41,6 +41,12 @@
 				<tag>$.Skladnik=$Skladnik</tag>
 			</item>
 			<item>
+				<ruleref uri="#Szukaj"/>
+				<tag>$.Szukaj="Szukaj"</tag>
+				<ruleref uri="#Pizza"/>
+				<tag>$.Pizza=$Pizza</tag>
+			</item>
+			<item>
 				<ruleref uri="#Wyczysc"/>
 				<tag>$.Wyczysc="Wyczysc"</tag>
 			</item>
@@ -66,6 +72,7 @@
 	
 	<rule id="Skladnik" scope="public">
 		<one-of>
+		
 			<item>
 				Pepperoni <tag> $="Pepperoni" </tag>
 			</item>
