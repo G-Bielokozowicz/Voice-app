@@ -34,9 +34,194 @@
 				<ruleref uri="#Rozmiar"/>
 				<tag>$.Rozmiar=$Rozmiar</tag>
 			</item>
+			<item>
+				<ruleref uri="#Szukaj"/>
+				<tag>$.Szukaj="Szukaj"</tag>
+				<ruleref uri="#Skladnik"/>
+				<tag>$.Skladnik=$Skladnik</tag>
+			</item>
+			<item>
+				<ruleref uri="#Wyczysc"/>
+				<tag>$.Wyczysc="Wyczysc"</tag>
+			</item>
 		</one-of>
 	</rule>
 
+	<rule id="Wyczysc" scope="public">
+		<one-of>
+			<item>Wyczyść</item>
+			<item>Wyczyść szukanie</item>
+			<item>Wyczyść szukaj</item>
+		</one-of>
+	</rule>
+	
+	<rule id="Szukaj" scope="public">
+		<one-of>
+			<item> Szukaj</item>
+			<item> Wyszukaj</item>
+			<item> Znajdź</item>
+			
+		</one-of>
+	</rule>
+	
+	<rule id="Skladnik" scope="public">
+		<one-of>
+			<item>
+				Pepperoni <tag> $="Pepperoni" </tag>
+			</item>
+			<item>
+				Peperoni <tag> $="Pepperoni" </tag>
+			</item>
+			<item>
+				Ser <tag> $="Ser" </tag>
+			</item>
+			<item>
+				Serem <tag> $="Ser" </tag>
+			</item>
+			<item>
+				Sera <tag> $="Ser" </tag>
+			</item>
+			<item>
+				Wędlina <tag> $="Wędlina" </tag>
+			</item>
+			<item>
+				Wedlina <tag> $="Wędlina" </tag>
+			</item>
+			<item>
+				Wedliną <tag> $="Wędlina" </tag>
+			</item>
+			<item>
+				Wedlinę <tag> $="Wędlina" </tag>
+			</item>
+			<item>
+				Wędliną <tag> $="Wędlina" </tag>
+			</item>
+			<item>
+				Wędlinę <tag> $="Wędlina" </tag>
+			</item>
+			<item>
+				Kiełbasa <tag> $="Kiełbasa" </tag>
+			</item>
+			<item>
+				Kiełbasą <tag> $="Kiełbasa" </tag>
+			</item>
+			<item>
+				Kiełbasę <tag> $="Kiełbasa" </tag>
+			</item>
+			<item>
+				Kiełbase <tag> $="Kiełbasa" </tag>
+			</item>
+			<item>
+				Szynka <tag> $="Szynka" </tag>
+			</item>
+			<item>
+				Szynką <tag> $="Szynka" </tag>
+			</item>
+			<item>
+				Szynkę <tag> $="Szynka" </tag>
+			</item>
+			<item>
+				Szynke <tag> $="Szynka" </tag>
+			</item>
+			<item>
+				Kurczak <tag> $="Kurczak" </tag>
+			</item>
+			<item>
+				Kurczaka <tag> $="Kurczak" </tag>
+			</item>
+			<item>
+				Kurczakiem <tag> $="Kurczak" </tag>
+			</item>
+			<item>
+				Cebula <tag> $="Cebula" </tag>
+			</item>
+			<item>
+				Cebulą <tag> $="Cebula" </tag>
+			</item>
+			<item>
+				Cebule <tag> $="Cebula" </tag>
+			</item>
+			<item>
+				Cebulę <tag> $="Cebula" </tag>
+			</item>
+			<item>
+				Cebuli <tag> $="Cebula" </tag>
+			</item>
+			<item>
+				Bekon <tag> $="Bekon" </tag>
+			</item>
+			<item>
+				Bekonem <tag> $="Bekon" </tag>
+			</item>
+			<item>
+				Bekonu <tag> $="Bekon" </tag>
+			</item>
+			<item>
+				Wołowina <tag> $="Wołowina" </tag>
+			</item>
+			<item>
+				Wołowine <tag> $="Wołowina" </tag>
+			</item>
+			<item>
+				Wołowiną <tag> $="Wołowina" </tag>
+			</item>
+			<item>
+				Wołowinę <tag> $="Wołowina" </tag>
+			</item>
+			<item>
+				Pieczarki <tag> $="Pieczarki" </tag>
+			</item>
+			<item>
+				Pieczarkami <tag> $="Pieczarki" </tag>
+			</item>
+			<item>
+				Pieczarką <tag> $="Pieczarki" </tag>
+			</item>
+			<item>
+				Papryka <tag> $="Papryka" </tag>
+			</item>
+			<item>
+				Papryką <tag> $="Papryka" </tag>
+			</item>
+			<item>
+				Paprykami <tag> $="Papryka" </tag>
+			</item>
+			<item>
+				Papryczka <tag> $="Papryka" </tag>
+			</item>
+			<item>
+				Oliwki <tag> $="Oliwki" </tag>
+			</item>
+			<item>
+				Oliwkami <tag> $="Oliwki" </tag>
+			</item>
+			<item>
+				Oliwką <tag> $="Oliwki" </tag>
+			</item>
+			<item>
+				Pomidory <tag> $="Pomidory" </tag>
+			</item>
+			<item>
+				Pomidor <tag> $="Pomidory" </tag>
+			</item>
+			<item>
+				Pomidorem <tag> $="Pomidory" </tag>
+			</item>
+			<item>
+				Pomidora <tag> $="Pomidory" </tag>
+			</item>
+			<item>
+				Ananas <tag> $="Ananas" </tag>
+			</item>
+			<item>
+				Ananasem <tag> $="Ananas" </tag>
+			</item>
+			<item>
+				Ananasa <tag> $="Ananas" </tag>
+			</item>
+		</one-of>
+	</rule>
+	
 	<rule id="Pizza" scope="public">
 		<one-of>
 			<item>
@@ -48,8 +233,8 @@
 				<tag>$="Pepperoni"</tag>
 			</item>
 			<item>
-				<ruleref uri="#Kurczak"/>
-				<tag>$="Kurczak"</tag>
+				<ruleref uri="#Kurczakowa"/>
+				<tag>$="Kurczakowa"</tag>
 			</item>
 			<item>
 				<ruleref uri="#Americana"/>
@@ -160,13 +345,13 @@
 		</one-of>
 	</rule>
 
-	<rule id="Kurczak" scope="public">
+	<rule id="Kurczakowa" scope="public">
 		<one-of>
 			<item>
-				Kurczak
+				Kurczakowa
 			</item>
 			<item>
-				Kurczaka
+				Kurczakową
 			</item>
 			<item>
 				Z Kurczaka

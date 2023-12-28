@@ -88,7 +88,19 @@ namespace Projekt
                 speechSynthesiserEngine.SpeakAsync("Test, udzielam pomocy");
             }
 
-            if (semantics.ContainsKey("Rozmiar") && (semantics.ContainsKey("Pizza")))
+            if (semantics.ContainsKey("Wyczysc"))
+            {
+                txtPizzaIngredientSearch.Text = "";
+                txtPizzaNameSearch.Text = "";
+            }
+
+            if (semantics.ContainsKey("Szukaj") && (semantics.ContainsKey("Skladnik")))
+            {
+                string chosenIngredient = semantics["Skladnik"].Value.ToString();
+                txtPizzaIngredientSearch.Text = chosenIngredient;
+            }
+
+            if (semantics.ContainsKey("Rozmiar") && (semantics.ContainsKey("Pizza"))) // powiedziano rozmiar i pizze, np. duza pepperoni - dodaj do zamowienia
             {
                 string chosenPizza = semantics["Pizza"].Value.ToString();
                 string chosenSize = semantics["Rozmiar"].Value.ToString();
@@ -96,13 +108,13 @@ namespace Projekt
                 return;
             }
 
-            if (semantics.ContainsKey("Rozmiar"))
+            if (semantics.ContainsKey("Rozmiar")) // powiedziano tylko rozmiar, dziala wylacznie w przypadku gdy wpierw wybrana zostanie pizza z gui
             {
                 string chosenSize = semantics["Rozmiar"].Value.ToString();
                 
                 if (sizeDialog.IsVisible)
                 {
-                    Console.WriteLine("Jest dialog");
+                   
                     switch (chosenSize)
                     {
                         case "Mała":
@@ -125,18 +137,18 @@ namespace Projekt
                 } 
                 else
                 {
-                    Console.WriteLine("Nie ma dialogu");
+                   
                 }
                 return;
             }
 
-            if (semantics.ContainsKey("Pizza"))
+            if (semantics.ContainsKey("Pizza")) // powiedziano tylko pizze, poniformuj, ze trzeba glosem wybrac odrazu pizze i rozmiar
             {
-                string chosenPizza = semantics["Pizza"].Value.ToString();
+                //string chosenPizza = semantics["Pizza"].Value.ToString();
 
-                AddPizzaToOrderedListBoxVoice(chosenPizza);
-              
-               
+                //AddPizzaToOrderedListBoxVoice(chosenPizza);
+
+                speechSynthesiserEngine.SpeakAsync("Proszę wybrać rozmiar razem z wybraną piccą");
                 return;
             }
 
@@ -189,13 +201,13 @@ namespace Projekt
             {
                  new Pizza("Margherita", new List<string> { "Sos pomidorowy", "Ser",}, 29.99, 32.99, 37.99),
                  new Pizza("Pepperoni", new List<string> { "Sos pomidorowy", "Ser", "Pepperoni" },32.99, 35.99, 39.99),
-                 new Pizza("Kurczak", new List<string> { "Sos pomidorowy", "Ser", "Kurczar", "Kukurydza" },37.99, 42.99, 45.99),
+                 new Pizza("Kurczakowa", new List<string> { "Sos pomidorowy", "Ser", "Kurczak", "Kukurydza" },37.99, 42.99, 45.99),
                  new Pizza("Americana", new List<string> { "Sos pomidorowy", "Ser", "Pieczarki","Pomidory" },37.99, 42.99, 45.99),
                  new Pizza("Bekonowa", new List<string> { "Sos pomidorowy", "Ser", "Boczek" },32.99, 35.99, 39.99),
                  new Pizza("Mięsna", new List<string> { "Sos pomidorowy", "Ser", "Pepperoni", "Wędlina","Kiełbasa","Bekon" },42.99, 46.99, 49.99),
-                 new Pizza("Grecka", new List<string> { "Sos pomidorowy", "Ser", "Oliwki","Pomidorki koktajlowe" },45.99, 50.99, 55.99),
+                 new Pizza("Grecka", new List<string> { "Sos pomidorowy", "Ser", "Oliwki"},45.99, 50.99, 55.99),
                  new Pizza("Hawajska", new List<string> { "Sos pomidorowy", "Ser", "Ananas" },37.99, 42.99, 45.99),
-                 new Pizza("Europejska", new List<string> { "Sos pomidorowy", "Ser", "Pieczarki", "Szynka","Wołowoina" },53.99, 58.99, 61.99),
+                 new Pizza("Europejska", new List<string> { "Sos pomidorowy", "Ser", "Pieczarki", "Szynka","Wołowina" },53.99, 58.99, 61.99),
                  new Pizza("Farmerska", new List<string> { "Sos pomidorowy", "Ser", "Cebula", "Papryka","Kurczak","Pieczarki" },53.99, 58.99, 61.99),
                  
                 // Dodaj inne pizze
