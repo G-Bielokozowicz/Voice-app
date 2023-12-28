@@ -86,12 +86,37 @@ namespace Projekt
             if (semantics.ContainsKey("Pomoc"))
             {
                 speechSynthesiserEngine.SpeakAsync("Test, udzielam pomocy");
+                return;
+            }
+
+            if (semantics.ContainsKey("Usun"))
+            {
+                if (semantics.ContainsKey("Numer"))
+                {
+                    int chosenNumer = int.Parse(semantics["Numer"].Value.ToString());
+                    OrderedPizza pizzaToRemove = orderedPizzas.FirstOrDefault(pizza => pizza.Index == chosenNumer);
+                    if (pizzaToRemove != null)
+                    {
+                        RemovePizzaFromOrderedListBox(pizzaToRemove);
+                        Console.WriteLine($"Pizza o indeksie {chosenNumer} została usunięta.");
+                    } else
+                    {
+                        speechSynthesiserEngine.SpeakAsync("Nie ma tej pozycji w zamówieniu.");
+                    }
+
+                }
+                else
+                {
+                    speechSynthesiserEngine.SpeakAsync("Proszę powiedzieć którą pozycję usunąć z zamówienia");
+                }
+                return;
             }
 
             if (semantics.ContainsKey("Wyczysc"))
             {
                 txtPizzaIngredientSearch.Text = "";
                 txtPizzaNameSearch.Text = "";
+                return;
             }
 
             if (semantics.ContainsKey("Szukaj"))

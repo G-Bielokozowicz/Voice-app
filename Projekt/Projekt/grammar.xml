@@ -50,9 +50,261 @@
 				<ruleref uri="#Wyczysc"/>
 				<tag>$.Wyczysc="Wyczysc"</tag>
 			</item>
+			<item>
+				<ruleref uri="#Usun"/>
+				<tag>$.Usun="Usun"</tag>
+				<ruleref uri="#Numer"/>
+				<tag>$.Numer=$Numer</tag>
+			</item>
+			<item>
+				<ruleref uri="#Usun"/>
+				<tag>$.Usun="Usun"</tag>
+			</item>
 		</one-of>
 	</rule>
 
+	<rule id="Numer" scope="public">
+		<one-of>
+			<item>
+				Jeden <tag> $="1" </tag>
+			</item>
+			<item>
+				Raz <tag> $="1" </tag>
+			</item>
+			<item>
+				Pierwszą <tag> $="1" </tag>
+			</item>
+			<item>
+				Pierwsza <tag> $="1" </tag>
+			</item>
+			<item>
+				Druga <tag> $="2" </tag>
+			</item>
+			<item>
+				Drugą <tag> $="2" </tag>
+			</item>
+			<item>
+				Dwa <tag> $="2" </tag>
+			</item>
+			<item>
+				Trzy <tag> $="3" </tag>
+			</item>
+			<item>
+				Trzecia <tag> $="3" </tag>
+			</item>
+			<item>
+				Trzecią <tag> $="3" </tag>
+			</item>
+			<item>
+				Cztery <tag> $="4" </tag>
+			</item>
+			<item>
+				Czwarty <tag> $="4" </tag>
+			</item>
+			<item>
+				Czwartą <tag> $="4" </tag>
+			</item>
+			<item>
+				Pięć <tag> $="5" </tag>
+			</item>
+			<item>
+				Piąty <tag> $="5" </tag>
+			</item>
+			<item>
+				Piątą <tag> $="5" </tag>
+			</item>
+			<item>
+				Sześć <tag> $="6" </tag>
+			</item>
+			<item>
+				Szósty <tag> $="6" </tag>
+			</item>
+			<item>
+				Szóstą <tag> $="6" </tag>
+			</item>
+			<item>
+				Siedem <tag> $="7" </tag>
+			</item>
+			<item>
+				Siódmy <tag> $="7" </tag>
+			</item>
+			<item>
+				Siódmą <tag> $="7" </tag>
+			</item>
+			<item>
+				Osiem <tag> $="8" </tag>
+			</item>
+			<item>
+				Ósmy <tag> $="8" </tag>
+			</item>
+			<item>
+				Ósmą <tag> $="8" </tag>
+			</item>
+			<item>
+				Dziewięć <tag> $="9" </tag>
+			</item>
+			<item>
+				Dziewiąty <tag> $="9" </tag>
+			</item>
+			<item>
+				Dziewiątą <tag> $="9" </tag>
+			</item>
+			<item>
+				Dziesięć <tag> $="10" </tag>
+			</item>
+			<item>
+				Dziesiątą <tag> $="10" </tag>
+			</item>
+			<item>
+				Dziesiąty <tag> $="10" </tag>
+			</item>
+			<item>
+				Jedenaście <tag> $="11" </tag>
+			</item>
+			<item>
+				Jedenasty <tag> $="11" </tag>
+			</item>
+			<item>
+				Jedenastą <tag> $="11" </tag>
+			</item>
+			<item>
+				Dwanaście <tag> $="12" </tag>
+			</item>
+			<item>
+				Dwunastą <tag> $="12" </tag>
+			</item>
+			<item>
+				Dwunastę <tag> $="12" </tag>
+			</item>
+			<item>
+				Trzynaście <tag> $="13" </tag>
+			</item>
+			<item>
+				Trzynastą <tag> $="13" </tag>
+			</item>
+			<item>
+				Trzynaście <tag> $="13" </tag>
+			</item>
+			<item>
+				Czternaście <tag> $="14" </tag>
+			</item>
+			<item>
+				Czternastą <tag> $="14" </tag>
+			</item>
+			<item>
+				Piętnaście <tag> $="15" </tag>
+			</item>
+			<item>
+				Piętnastą <tag> $="15" </tag>
+			</item>
+			<item>
+				Szesnaście <tag> $="16" </tag>
+			</item>
+			<item>
+				Szesnastą <tag> $="16" </tag>
+			</item>
+			<item>
+				Siedemnaście <tag> $="17" </tag>
+			</item>
+			<item>
+				Siedemnastą <tag> $="17" </tag>
+			</item>
+			<item>
+				Osiemnaście <tag> $="18" </tag>
+			</item>
+			<item>
+				Osiemnastą <tag> $="18" </tag>
+			</item>
+			<item>
+				Dziewiętnaście <tag> $="19" </tag>
+			</item>
+			<item>
+				Dziewiętnastą <tag> $="19" </tag>
+			</item>
+			<item>
+				Dziewietnastą <tag> $="19" </tag>
+			</item>
+			<item>
+				Dwadzieścia <tag> $="20" </tag>
+			</item>
+			<item>
+				Dwudziestą <tag> $="20" </tag>
+			</item>
+			<item>
+				Dwadzieścia <tag> $="20" </tag>
+			</item>
+			<item>
+				Dwadzieścia jeden <tag> $="21" </tag>
+			</item>
+			<item>
+				Dwudziestą pierwszą<tag> $="21" </tag>
+			</item>
+			<item>
+				Dwadzieścia dwa <tag> $="22" </tag>
+			</item>
+			<item>
+				Dwudziestą drugą <tag> $="22" </tag>
+			</item>
+			<item>
+				Dwadzieścia trzy <tag> $="23" </tag>
+			</item>
+			<item>
+				Dwudziestą trzecią<tag> $="23" </tag>
+			</item>
+			<item>
+				Dwadzieścia cztery <tag> $="24" </tag>
+			</item>
+			<item>
+				Dwudziestą czwartą <tag> $="24" </tag>
+			</item>
+			<item>
+				Dwadzieścia pięć <tag> $="25" </tag>
+			</item>
+			<item>
+				Dwudziestą piątą <tag> $="25" </tag>
+			</item>
+			<item>
+				Dwadzieścia sześć <tag> $="26" </tag>
+			</item>
+			<item>
+				Dwudziestą szóstą <tag> $="26" </tag>
+			</item>
+			<item>
+				Dwadzieścia siedem <tag> $="27" </tag>
+			</item>
+			<item>
+				Dwudziestą siódmą <tag> $="27" </tag>
+			</item>
+			<item>
+				Dwadzieścia osiem <tag> $="28" </tag>
+			</item>
+			<item>
+				Dwudziestą ósmą<tag> $="28" </tag>
+			</item>
+			<item>
+				Dwadzieścia dziewięć <tag> $="29" </tag>
+			</item>
+			<item>
+				Dwudziestą dziewiątą <tag> $="29" </tag>
+			</item>
+			<item>
+				Trzydzieści <tag> $="30" </tag>
+			</item>
+			<item>
+				Trzydziestą <tag> $="30" </tag>
+			</item>
+		</one-of>
+	</rule>
+
+
+	<rule id="Usun" scope="public">
+		<one-of>
+			<item>Usun</item>
+			<item>Wyrzuć</item>
+			<item>Wyrzuc</item>
+		</one-of>
+	</rule>
+	
 	<rule id="Wyczysc" scope="public">
 		<one-of>
 			<item>Wyczyść</item>
