@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
-        Title="Pizza App" Height="680" Width="800">
+        Title="Pizza App" Height="680" Width="900">
     <Grid Background="Azure">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -70,8 +70,8 @@
 
         <Grid Grid.Column="1"> <!-- Grid prawy, z przerwa w środku-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="95*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="90*"/>
             </Grid.ColumnDefinitions>
 
 
@@ -89,7 +89,14 @@
                             <Border BorderBrush="Black" BorderThickness="1" Margin="2" Padding="5">
                                 <Grid>
                                     <StackPanel Grid.Column="0">
-                                        <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding Name}" />
+                                        <TextBlock FontWeight="Bold" FontSize="16">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} - {1}">
+                                                    <Binding Path="Index" />
+                                                    <Binding Path="Name" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
                                         <WrapPanel>
                                             <ItemsControl ItemsSource="{Binding Ingredients}">
                                                 <ItemsControl.ItemTemplate>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +12,13 @@ namespace Projekt
         private string name;
         private List<string> ingredients;
         private double price;
-        private string size;
-
+        private string size; 
+        private int index;
+        public int Index
+        {
+            get { return index; }
+            set { index = value; }
+        }
         public string Name
         {
             get { return name; }

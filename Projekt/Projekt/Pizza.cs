@@ -10,12 +10,13 @@ namespace Projekt
         private double priceSmall;
         private double priceMedium;
         private double priceBig;
-
+      
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
+      
 
         public List<string> Ingredients
         {

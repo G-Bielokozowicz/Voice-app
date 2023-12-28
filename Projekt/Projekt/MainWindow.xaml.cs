@@ -18,7 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Threading.Tasks;
+
 
 namespace Projekt
 {
@@ -321,6 +321,11 @@ namespace Projekt
                     OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
 
                     orderedPizzas.Add(ordPizza);
+                    for (int i = 0; i < orderedPizzas.Count; i++)
+                    {
+                        orderedPizzas[i].Index = i + 1;
+                    }
+                    Console.WriteLine(orderedPizzas.IndexOf(ordPizza));
                     orderedPizzaListBox.ItemsSource = orderedPizzas;
                     UpdateTotalPrice();
                 }
@@ -328,28 +333,29 @@ namespace Projekt
             }
         }
 
-        private void AddPizzaToOrderedListBoxVoice(string pizzaName)
-        {
+        //private void AddPizzaToOrderedListBoxVoice(string pizzaName)
+        //{
 
-            Pizza pizza = findPizza(pizzaName);
-            // Dodaj wybraną pizzę do orderedPizzaListBox
-            if (pizza != null)
-            {
-                sizeDialog = new PizzaSizeSelectionDialog(this);
-                // Pokaż okno dialogowe
-                if (sizeDialog.ShowDialog() == true)
-                {
-                    // Pobierz wybrany rozmiar i dodaj pizzę z rozmiarem do listy zamówień
+        //    Pizza pizza = findPizza(pizzaName);
+        //    // Dodaj wybraną pizzę do orderedPizzaListBox
+        //    if (pizza != null)
+        //    {
+        //        sizeDialog = new PizzaSizeSelectionDialog(this);
+        //        // Pokaż okno dialogowe
+        //        if (sizeDialog.ShowDialog() == true)
+        //        {
+        //            // Pobierz wybrany rozmiar i dodaj pizzę z rozmiarem do listy zamówień
 
-                    OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
+        //            OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(sizeDialog.SelectedSize), sizeDialog.SelectedSize);
 
-                    orderedPizzas.Add(ordPizza);
-                    orderedPizzaListBox.ItemsSource = orderedPizzas;
-                    UpdateTotalPrice();
-                }
+        //            orderedPizzas.Add(ordPizza);
+                  
+        //            orderedPizzaListBox.ItemsSource = orderedPizzas;
+        //            UpdateTotalPrice();
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
         private void AddPizzaWithSizeToOrderedListBoxVoice(string pizzaName, string size)
         {
@@ -363,6 +369,10 @@ namespace Projekt
                 OrderedPizza ordPizza = new OrderedPizza(pizza.Name, pizza.Ingredients, pizza.GetPriceBySize(size), size);
 
                 orderedPizzas.Add(ordPizza);
+                for (int i = 0; i < orderedPizzas.Count; i++)
+                {
+                    orderedPizzas[i].Index = i + 1;
+                }
                 orderedPizzaListBox.ItemsSource = orderedPizzas;
                 UpdateTotalPrice();
                 
@@ -394,14 +404,21 @@ namespace Projekt
             {
                 // Dodaj wybraną pizzę do orderedPizzaListBox
                 orderedPizzas.Remove(pizzaToRemove);
+                for (int i = 0; i < orderedPizzas.Count; i++)
+                {
+                    orderedPizzas[i].Index = i + 1;
+
+                }
+                orderedPizzaListBox.ItemsSource = null;
                 orderedPizzaListBox.ItemsSource = orderedPizzas;
                 UpdateTotalPrice();
             }
         }
 
-        private void UpdateTotalPrice()
+        private void UpdateTotalPrice() // aktualizuje cene i indeksy zamowionych pizz
         {
-            TotalPrice = orderedPizzas.Sum(pizza => pizza.Price); // Przykładowo, możesz zmienić to na odpowiednie obliczenia
+            
+            TotalPrice = orderedPizzas.Sum(pizza => pizza.Price); 
             
         }
     }
