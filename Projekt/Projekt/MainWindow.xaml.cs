@@ -83,9 +83,15 @@ namespace Projekt
                 return;
             }
 
+            if (semantics.ContainsKey("Podsumowanie"))
+            {
+                SummaryOrderSpeak();
+                return;
+            }
+
             if (semantics.ContainsKey("Pomoc"))
             {
-                speechSynthesiserEngine.SpeakAsync("Test, udzielam pomocy");
+                speechSynthesiserEngine.SpeakAsync("Powiedz jaką pizzę chcesz zamówić wraz z rozmiarem. Na przykład Mała Hawajska. Możesz usunąć pizze z zamówienia mówiąc usuń i numer indeksu");
                 return;
             }
 
@@ -444,6 +450,19 @@ namespace Projekt
         {
             
             TotalPrice = orderedPizzas.Sum(pizza => pizza.Price); 
+            
+        }
+
+
+        private void SummaryOrderSpeak()
+        {
+            foreach (OrderedPizza ordPizza in orderedPizzas)
+            {
+                string size = ordPizza.Size.ToString();
+                string name= ordPizza.Name.ToString();
+                string speak = size + name;
+                speechSynthesiserEngine.SpeakAsync(speak);
+            }
             
         }
     }
