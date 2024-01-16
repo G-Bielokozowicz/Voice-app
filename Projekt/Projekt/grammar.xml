@@ -64,16 +64,30 @@
 				<ruleref uri="#Podsumowanie"/>
 				<tag>$.Podsumowanie="Podsumowanie"</tag>
 			</item>
+			<item>
+				<ruleref uri="#Zamow"/>
+				<tag>$.Zamow="Zamow"</tag>
+			</item>
 		</one-of>
 	</rule>
 
+
+	<rule id="Zamow" scope="public">
+		<one-of>
+			<item>Zamów</item>
+			<item>Zamawiam</item>
+			<item>Zamuf</item>
+			
+		</one-of>
+	</rule>
+	
 
 	<rule id="Podsumowanie" scope="public">
 		<one-of>
 			<item>Podsumowanie</item>
 			<item>Podsumuj</item>
-			
-			
+			<item>Potsumuj</item>
+			<item>Potsumuwanie</item>
 		</one-of>
 	</rule>
 	

@@ -83,6 +83,11 @@ namespace Projekt
                 return;
             }
 
+            if (semantics.ContainsKey("Zamow")){
+                OrderOrder();
+                return;
+            }
+
             if (semantics.ContainsKey("Podsumowanie"))
             {
                 SummaryOrderSpeak();
@@ -387,6 +392,12 @@ namespace Projekt
 
         //    }
         //}
+
+
+        private void OrderOrder()
+        {
+            speechSynthesiserEngine.SpeakAsync("Kwota zamowienia to " + totalPrice + " złoty");
+        }
 
         private void AddPizzaWithSizeToOrderedListBoxVoice(string pizzaName, string size)
         {
