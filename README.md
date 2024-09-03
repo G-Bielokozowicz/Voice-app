@@ -1,4 +1,4 @@
-# Projekt na systemy dialogowe
+# Aplikacja głosowa
 
 Aplikacja do zamawiania pizzy głosem, z interfejsem graficznym.
 
